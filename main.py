@@ -16,7 +16,7 @@ from langchain.prompts.chat import (
 )
 
 
-os.environ["OPENAI_API_KEY"] = 'sk-'
+os.environ["OPENAI_API_KEY"] = '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'
 
 embeddings = OpenAIEmbeddings()
 

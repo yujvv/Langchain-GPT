@@ -5,7 +5,7 @@ from langchain.document_loaders import DirectoryLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
 
 
-os.environ["OPENAI_API_KEY"] = 'sk-'
+os.environ["OPENAI_API_KEY"] = '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'
 
 # loader = DirectoryLoader('../', glob='**/*.txt')
 loader = DirectoryLoader('./', glob='data_t.txt')
