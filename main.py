@@ -7,6 +7,7 @@ from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.vectorstores import Chroma
 from langchain.chains import ChatVectorDBChain, ConversationalRetrievalChain
+from langchain.chains import RetrievalQAWithSourcesChain
 
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts.chat import (
@@ -60,8 +61,19 @@ messages = [
 # 初始化 prompt 对象
 prompt = ChatPromptTemplate.from_messages(messages)
 
+# def get_chain(store):
+#     chain_type_kwargs = {"prompt": prompt}
+#     chain = RetrievalQAWithSourcesChain.from_chain_type(
+#         ChatOpenAI(temperature=0), 
+#         chain_type="stuff", 
+#         retriever=store.as_retriever(),
+#         chain_type_kwargs=chain_type_kwargs,
+#         reduce_k_below_max_tokens=True
+#     )
+#     return chain
+
 # 初始化问答链
-qa = ConversationalRetrievalChain.from_llm(ChatOpenAI(temperature=0.1,max_tokens=2048),retriever,condense_question_prompt=prompt)
+qa = ConversationalRetrievalChain.from_llm(ChatOpenAI(temperature=0.1,max_tokens=2048),retriever,condense_question_prompt=prompt,reduce_k_below_max_tokens=True)
 
 chat_history = []
 while True:
