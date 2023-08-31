@@ -16,7 +16,7 @@ from langchain.prompts.chat import (
 )
 
 
-os.environ["OPENAI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = 'sk-'
 
 embeddings = OpenAIEmbeddings()
 
@@ -37,7 +37,11 @@ retriever = docsearch.as_retriever()
 # chain = load_qa_chain(llm, chain_type="stuff", verbose=True)
 # chain.run(input_documents=docs, question=query)
 
-
+# with the tone and personality of the protagonist as described in the context
+# Pretend you are the character in the following context description. 
+# todo 
+# 增加角色扮演，解决token数量限制。
+# https://github.com/langchain-ai/langchain/issues/2333
 system_template = """
 Use the following context to answer the user's question.
 If you don't know the answer, say you don't, don't try to make it up. And answer in Chinese.
